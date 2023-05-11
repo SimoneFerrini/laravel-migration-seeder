@@ -1,1 +1,31 @@
 @import '~bootstrap/scss/bootstrap';
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+.my-container{
+    width: 70%;
+    margin: 0 auto;
+
+    .my-table{
+        border: 1px solid grey;
+        
+        .my-thead{
+            border: 3px solid black;
+            padding: 10px;
+
+            th{
+                border: 1px solid black;
+            }
+        }
+
+        td{
+            border: 1px solid grey;
+            text-align: center;
+        }
+    }
+}
