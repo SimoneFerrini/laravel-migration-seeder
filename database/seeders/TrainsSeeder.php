@@ -19,26 +19,26 @@ class TrainsSeeder extends Seeder
     {
 
         $trainFile = fopen(__DIR__ . '/../trains.csv', 'r');
-        $trainCVS = fgetcsv($trainFile);
+        $trainCSV = fgetcsv($trainFile);
 
-        $trainCVS = fgetcsv($trainFile);
+        $trainCSV = fgetcsv($trainFile);
 
-        while($trainCVS != false){
+        while($trainCSV != false){
             $newTrain = new Train();
 
-            $newTrain->azienda = $trainCVS[0];
-            $newTrain->stazione_di_partenza = $trainCVS[1];
-            $newTrain->Stazione_di_arrivo = $trainCVS[2];
-            $newTrain->orario_di_partenza = $trainCVS[3];
-            $newTrain->orario_di_arrivo = $trainCVS[4];
-            $newTrain->codice_treno = $trainCVS[5];
-            $newTrain->numero_carrozze = $trainCVS[6];
-            $newTrain->in_orario = $trainCVS[7];
-            $newTrain->cancellato = $trainCVS[8];
+            $newTrain->azienda = $trainCSV[0];
+            $newTrain->stazione_di_partenza = $trainCSV[1];
+            $newTrain->Stazione_di_arrivo = $trainCSV[2];
+            $newTrain->orario_di_partenza = $trainCSV[3];
+            $newTrain->orario_di_arrivo = $trainCSV[4];
+            $newTrain->codice_treno = $trainCSV[5];
+            $newTrain->numero_carrozze = $trainCSV[6];
+            $newTrain->in_orario = $trainCSV[7];
+            $newTrain->cancellato = $trainCSV[8];
 
             $newTrain->save();
 
-            $trainCVS = fgetcsv($trainFile);
+            $trainCSV = fgetcsv($trainFile);
         }
     }
 }
