@@ -17,20 +17,28 @@ class TrainsSeeder extends Seeder
      */
     public function run(Faker $faker)
     {
-        for($i = 0; $i < 10; $i++){
+
+        $trainFile = fopen(__DIR__ . '/../trains.csv', 'r');
+        $trainCVS = fgetcsv($trainFile);
+
+        $trainCVS = fgetcsv($trainFile);
+
+        while($trainCVS != false){
             $newTrain = new Train();
 
-            $newTrain->azienda = $faker->word(2, true);
-            $newTrain->stazione_di_partenza = $faker->city();
-            $newTrain->Stazione_di_arrivo = $faker->city();
-            $newTrain->orario_di_partenza = $faker->dateTimeBetween('-1 week', '+1 week');
-            $newTrain->orario_di_arrivo = $faker->dateTimeBetween('-1 week', '+1 week');
-            $newTrain->codice_treno = $faker->randomNumber(4, true);
-            $newTrain->numero_carrozze = $faker->randomDigitNotNull();
-            $newTrain->in_orario = $faker->boolean();
-            $newTrain->cancellato = $faker->boolean();
+            $newTrain->azienda = $trainCVS[0];
+            $newTrain->stazione_di_partenza = $trainCVS[1];
+            $newTrain->Stazione_di_arrivo = $trainCVS[2];
+            $newTrain->orario_di_partenza = $trainCVS[3];
+            $newTrain->orario_di_arrivo = $trainCVS[4];
+            $newTrain->codice_treno = $trainCVS[5];
+            $newTrain->numero_carrozze = $trainCVS[6];
+            $newTrain->in_orario = $trainCVS[7];
+            $newTrain->cancellato = $trainCVS[8];
 
             $newTrain->save();
+
+            $trainCVS = fgetcsv($trainFile);
         }
     }
 }
